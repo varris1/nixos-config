@@ -1,0 +1,27 @@
+{
+  programs.fish = {
+    enable = true;
+    functions.fish_greeting = "";
+    shellAliases = {
+      ec = "hx ~/.nixconf";
+      rebuild = "doas nixos-rebuild switch --flake ~/.nixconf";
+      ff = "fastfetch";
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+
+    settings = {
+      line_break.disabled = true;
+      cmd_duration.disabled = true;
+    };
+  };
+
+  programs.eza = {
+    enable = true;
+    enableFishIntegration = true;
+    icons = "auto";
+  };
+}

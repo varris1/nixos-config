@@ -1,9 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}:
-{
+{ pkgs, inputs, ... }: {
   imports = [
     inputs.niri.homeModules.default
     inputs.niri.homeModules.stylix

@@ -31,6 +31,7 @@
   time.timeZone = "Europe/Vienna";
 
   services.udev.extraRules = ''
+    #fixes instant wakeup on gigabyte mobos
     ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x1483" ATTR{power/wakeup}="disabled"
   '';
 
@@ -95,6 +96,7 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.mutableUsers = false;
   users.users.root.hashedPasswordFile = "/etc/nixos/secrets/passwordfile_root.txt";
   users.users.manuel = {
     isNormalUser = true;

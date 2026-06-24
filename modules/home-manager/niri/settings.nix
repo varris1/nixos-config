@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{ config, ... }: {
   wayland.windowManager.niri.settings = {
     output = [
       {

@@ -24,4 +24,12 @@
     enableFishIntegration = true;
     icons = "auto";
   };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    options = [
+      "--cmd cd"
+    ];
+  };
 }

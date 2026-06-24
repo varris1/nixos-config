@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   ...
@@ -24,6 +25,11 @@
   programs.bat.enable = true;
   programs.btop.enable = true;
   programs.ripgrep.enable = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "${config.home.homeDirectory}/.nixconf";
+  };
 
   services.kdeconnect = {
     enable = true;

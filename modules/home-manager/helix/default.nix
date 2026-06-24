@@ -59,7 +59,6 @@
         space = {
           "i" = ":toggle lsp.display-inlay-hints";
         };
-
       };
     };
 

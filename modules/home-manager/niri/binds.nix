@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
-{
+{ pkgs, lib, ... }: {
   wayland.windowManager.niri.settings.binds = {
     "Mod+Shift+Slash".show-hotkey-overlay = [ ];
 

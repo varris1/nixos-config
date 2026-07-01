@@ -1,6 +1,7 @@
 {
   imports = [
     ./beets
+    ./cava
     ./fastfetch
     ./fish
     ./ghostty
@@ -10,6 +11,7 @@
     ./niri
     ./xdg-mime
     ./yazi
+    ./zellij
     ./zen-browser
   ];
 }

@@ -37,6 +37,7 @@
   };
 
   home.packages = [
+    pkgs.pavucontrol
     pkgs.kew
     inputs.noctalia.packages.x86_64-linux.default
   ];

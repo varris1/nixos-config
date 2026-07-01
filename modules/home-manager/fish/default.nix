@@ -4,7 +4,7 @@
     functions.fish_greeting = "";
     shellAliases = {
       ec = "hx ~/.nixconf";
-      rebuild = "doas nixos-rebuild switch --flake ~/.nixconf";
+      rebuild = "nh os switch";
       ff = "fastfetch";
     };
   };

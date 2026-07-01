@@ -2,7 +2,6 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -137,6 +136,7 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    file
     fd
     helix
     lm_sensors
@@ -192,11 +192,11 @@
   };
   programs.noctalia-greeter = {
     enable = true;
-    settings.cursor = {
-      theme = config.stylix.cursor.name;
-      size = config.stylix.cursor.size;
-      package = config.stylix.cursor.package;
-    };
+    # settings.cursor = {
+    #   theme = config.stylix.cursor.name;
+    #   size = config.stylix.cursor.size;
+    #   package = config.stylix.cursor.package;
+    # };
   };
 
   programs.nix-ld.enable = true;

@@ -2,7 +2,8 @@
   stylix = {
     enable = true;
     overlays.enable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-material-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
 
     opacity.terminal = 0.9;
@@ -23,8 +24,11 @@
       serif = config.stylix.fonts.sansSerif;
 
       monospace = {
-        package = pkgs.jetbrains-mono;
-        name = "JetBrains Mono";
+        # package = pkgs.jetbrains-mono;
+        # name = "JetBrains Mono";
+
+        package = pkgs.aporetic;
+        name = "Aporetic Sans Mono";
       };
 
       sizes = {

@@ -11,11 +11,11 @@
 
       extensions.packages = with inputs.firefox-addons.packages.x86_64-linux; [
         bitwarden
-        blocktube
         darkreader
         return-youtube-dislikes
         sponsorblock
         startpage-private-search
+        blocktube
         ublock-origin
         violentmonkey
       ];

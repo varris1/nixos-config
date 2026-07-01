@@ -11,8 +11,15 @@
       opener = {
         play = [
           {
-            run = "mpv \"$@\"";
+            run = "mpv %s";
             orphan = true;
+            for = "unix";
+          }
+        ];
+        edit = [
+          {
+            run = "$EDITOR %s";
+            block = true;
             for = "unix";
           }
         ];
@@ -23,6 +30,10 @@
           {
             mime = "{audio,video}/*";
             use = "play";
+          }
+          {
+            url = "*.nix";
+            use = "edit";
           }
         ];
       };

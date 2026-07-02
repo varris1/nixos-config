@@ -25,5 +25,5 @@
     };
   };
   stylix.targets.zen-browser.profileNames = [ "nixos-profile" ];
-  stylix.targets.zen-browser.enableCss = true; # needed to get transparent zen working
+  stylix.targets.zen-browser.enableCss = true;
 }

@@ -29,7 +29,7 @@
   # Set your time zone.
   time.timeZone = "Europe/Vienna";
 
-  services.udev.extraRules = ''
+  services.udev.extraRules = /* udev */ ''
     #fixes instant wakeup on gigabyte mobos
     ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x1483" ATTR{power/wakeup}="disabled"
   '';
@@ -56,8 +56,6 @@
   security.polkit.enable = true;
 
   # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -117,6 +115,7 @@
     enable = true;
     package = pkgs.steam.override {
       extraEnv = {
+        RADV_EXPERIMENTAL = "heap";
         PROTON_ENABLE_WAYLAND = 1;
         WAYLANDDRV_PRIMARY_MONITOR = "DP-1";
         PROTON_USE_WOW64 = 1;
@@ -228,11 +227,15 @@
       "flakes"
     ];
     settings.auto-optimise-store = true;
+    settings.warn-dirty = false;
     nixPath = lib.mapAttrsToList (name: flake: "${name}=${flake.outPath}") inputs;
     channel.enable = false;
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = (_: true);
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you

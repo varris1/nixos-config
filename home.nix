@@ -16,7 +16,7 @@
 
   programs.imv.enable = true;
 
-  programs.vesktop.enable = true;
+  programs.discord.enable = true;
 
   programs.nix-index.enable = true;
   programs.nix-index-database.comma.enable = true;
@@ -37,9 +37,12 @@
   };
 
   home.packages = [
-    pkgs.pavucontrol
-    pkgs.kew
     inputs.noctalia.packages.x86_64-linux.default
+
+    # pkgs.kew
+    (pkgs.callPackage ./packages/kew { })
+    pkgs.openmw
+    pkgs.pavucontrol
   ];
 
   home.stateVersion = "26.05";

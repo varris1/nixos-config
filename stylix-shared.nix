@@ -24,11 +24,8 @@
       serif = config.stylix.fonts.sansSerif;
 
       monospace = {
-        # package = pkgs.jetbrains-mono;
-        # name = "JetBrains Mono";
-
-        package = pkgs.aporetic;
-        name = "Aporetic Sans Mono";
+        package = pkgs.jetbrains-mono;
+        name = "JetBrains Mono";
       };
 
       sizes = {
@@ -40,8 +37,8 @@
     };
     icons = {
       enable = true;
-      package = pkgs.gruvbox-plus-icons;
-      dark = "Gruvbox Plus Dark";
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus";
     };
   };
 }

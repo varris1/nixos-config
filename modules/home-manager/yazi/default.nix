@@ -18,7 +18,7 @@
         ];
         edit = [
           {
-            run = "$EDITOR %s";
+            run = "hx %s";
             block = true;
             for = "unix";
           }

@@ -39,8 +39,7 @@
   home.packages = [
     inputs.noctalia.packages.x86_64-linux.default
 
-    # pkgs.kew
-    (pkgs.callPackage ./packages/kew { })
+    pkgs.kew
     pkgs.openmw
     pkgs.pavucontrol
   ];

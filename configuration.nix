@@ -81,10 +81,10 @@
   programs.dconf.enable = true;
 
   users.mutableUsers = false;
-  users.users.root.hashedPasswordFile = "/etc/nixos/secrets/passwordfile_root.txt";
   users.users.manuel = {
     isNormalUser = true;
-    hashedPasswordFile = "/etc/nixos/secrets/passwordfile_manuel.txt";
+    # initialPassword = "12345";
+    hashedPasswordFile = "/persist/passwords/password_manuel";
     extraGroups = [
       "uinput"
       "seat"

@@ -7,55 +7,29 @@
   modulesPath,
   ...
 }:
+
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
+  fileSystems."/mnt/steam_games" = {
+    device = "/dev/disk/by-id/nvme-WDS200T1X0E-00AFY0_21383Q802211_1-part1";
+    fsType = "ext4";
+  };
+
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
     "ahci"
-    "usb_storage"
     "usbhid"
+    "usb_storage"
+    "uas"
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/df0bede7-4b2f-4864-9b43-f5364bab0833";
-    fsType = "btrfs";
-    options = [
-      "subvol=@nixos"
-      "compress=zstd"
-    ];
-  };
-
-  fileSystems."/mnt/btrfs" = {
-    device = "/dev/disk/by-uuid/df0bede7-4b2f-4864-9b43-f5364bab0833";
-    fsType = "btrfs";
-    options = [ "subvol=/" ];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F5B5-5C61";
-    fsType = "vfat";
-    options = [
-      "fmask=0022"
-      "dmask=0022"
-    ];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/041d0523-acfc-4b73-894b-5daafe63477d";
-    fsType = "ext4";
-  };
-
-  swapDevices = [
-    { device = "/dev/disk/by-uuid/44d1bb48-784b-47f7-b6d4-40bfa93b9356"; }
-  ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -11,6 +11,7 @@
     settings = {
       plugins = [
         "badfiles"
+        # "convert"
         "duplicates"
         "edit"
         "embedart"
@@ -38,9 +39,24 @@
 
       paths = {
         default = "$albumartist/$year - $album%aunique{}/%if{$multidisc,Disc $disc/}$track $title";
-        singleton = "singleton: $artist/Singles/$year - $title";
-        comp = "comp: Compilations/$year - $album%aunique{}/$track $title";
+        singleton = "$artist/Singles/$year - $title";
+        comp = "Compilations/$year - $album%aunique{}/$track $title";
       };
+
+      # convert = {
+      #   auto = true;
+      #   copy_album_art = true;
+      #   embed = true;
+      #   never_convert_lossy_files = true;
+      #   format = "opus";
+      #   threads = 8;
+      #   formats = {
+      #     "opus" = {
+      #       command = "ffmpeg -i $source -c:a libopus -b:a 192k -vbr on $dest";
+      #       extension = "opus";
+      #     };
+      #   };
+      # };
 
       item_fields = {
         multidisc = "1 if disctotal > 1 else 0";

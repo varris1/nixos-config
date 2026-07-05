@@ -7,4 +7,6 @@
       core.pager = "bat";
     };
   };
+
+  programs.jujutsu.enable = true;
 }

@@ -2,6 +2,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    preservation.url = "github:nix-community/preservation";
+
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -32,7 +37,11 @@
     nixosConfigurations.terra = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
+        inputs.disko.nixosModules.disko
+        inputs.preservation.nixosModules.default
         ./configuration.nix
+        ./disko.nix
+        ./preservation.nix
         inputs.stylix.nixosModules.default
         inputs.niri.nixosModules.default
         inputs.noctalia-greeter.nixosModules.default

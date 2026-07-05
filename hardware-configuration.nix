@@ -13,7 +13,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  fileSystems."/mnt/steam_games" = {
+  fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-id/nvme-WDS200T1X0E-00AFY0_21383Q802211_1-part1";
     fsType = "ext4";
   };

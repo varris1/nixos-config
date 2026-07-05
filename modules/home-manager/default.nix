@@ -7,6 +7,7 @@
     ./ghostty
     ./git
     ./helix
+    ./kew
     ./mpv
     ./niri
     ./xdg-mime

@@ -18,16 +18,16 @@
       ];
 
       directories = [
-        "/var/lib/systemd/timers"
-        "/var/lib/nixos"
-        "/var/log"
-        "/var/lib/bluetooth"
-        "/etc/NetworkManager/system-connections"
-        "/var/lib/noctalia-greeter"
         {
           directory = "/tmp";
           mode = "1777";
         }
+        "/var/lib/nixos"
+        "/var/lib/systemd/timers"
+        "/var/log"
+        "/var/lib/bluetooth"
+        "/etc/NetworkManager/system-connections"
+        "/var/lib/noctalia-greeter"
       ];
 
       users.manuel = {
@@ -49,6 +49,7 @@
           ".config/discord"
           ".config/kdeconnect"
           ".config/kew"
+          ".config/qobuz-dl"
           ".config/zen"
           ".local/share/fish"
           ".local/share/zoxide"

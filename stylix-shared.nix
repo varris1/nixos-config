@@ -8,6 +8,7 @@
 
     opacity.terminal = 0.9;
     opacity.applications = 0.9;
+    opacity.popups = 0.9;
 
     cursor = {
       name = "Bibata-Modern-Ice";

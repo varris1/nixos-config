@@ -8,7 +8,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./stylix-shared.nix
+    ../../modules/stylix-shared.nix
+    ./disko.nix
+    ./preservation.nix
   ];
 
   boot.loader.systemd-boot.enable = true;
@@ -187,12 +189,14 @@
       dates = "weekly";
       options = "--delete-older-than 30d";
     };
-    settings.experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    settings.auto-optimise-store = true;
-    settings.warn-dirty = false;
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      auto-optimise-store = true;
+      warn-dirty = false;
+    };
     nixPath = lib.mapAttrsToList (name: flake: "${name}=${flake.outPath}") inputs;
     channel.enable = false;
 
@@ -202,6 +206,7 @@
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
   };
+  nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
   system.stateVersion = "26.05";
 }

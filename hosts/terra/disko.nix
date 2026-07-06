@@ -2,6 +2,11 @@
   fileSystems."/nix".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
 
+  fileSystems."/mnt/storage" = {
+    device = "/dev/disk/by-id/nvme-WDS200T1X0E-00AFY0_21383Q802211_1-part1";
+    fsType = "ext4";
+  };
+
   disko.devices.nodev = {
     "/" = {
       fsType = "tmpfs";

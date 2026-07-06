@@ -74,7 +74,7 @@
       }
 
       {
-        match._props.app-id = "dev.noctalia.Noctalia.Settings";
+        match._props.app-id = "dev.noctalia.Noctalia";
         open-floating = true;
         default-column-width.fixed = 1080;
         default-window-height.fixed = 920;

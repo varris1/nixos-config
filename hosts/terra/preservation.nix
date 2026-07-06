@@ -50,8 +50,10 @@ in
           ".config/kew"
           ".config/qobuz-dl"
           ".config/zen"
+
           ".local/share/fish"
           ".local/share/zoxide"
+
           ".local/state/noctalia"
           ".local/state/wireplumber"
 
@@ -65,7 +67,6 @@ in
     };
 
     preserveAt."/mnt/storage/persist" = {
-      inherit commonMountOptions;
       users.manuel = {
         inherit commonMountOptions;
 

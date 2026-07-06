@@ -13,11 +13,6 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  fileSystems."/mnt/storage" = {
-    device = "/dev/disk/by-id/nvme-WDS200T1X0E-00AFY0_21383Q802211_1-part1";
-    fsType = "ext4";
-  };
-
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
@@ -27,6 +22,7 @@
     "uas"
     "sd_mod"
   ];
+
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];

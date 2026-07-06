@@ -28,8 +28,8 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
-    firefox-addons.url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-    firefox-addons.inputs.nixpkgs.follows = "nixpkgs";
+    nur.url = "github:nix-community/nur";
+    nur.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = inputs: {
     formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
@@ -37,11 +37,9 @@
     nixosConfigurations.terra = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };
       modules = [
+        ./hosts/terra/configuration.nix
         inputs.disko.nixosModules.disko
         inputs.preservation.nixosModules.default
-        ./configuration.nix
-        ./disko.nix
-        ./preservation.nix
         inputs.stylix.nixosModules.default
         inputs.niri.nixosModules.default
         inputs.noctalia-greeter.nixosModules.default
@@ -50,7 +48,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.manuel = ./home.nix;
+          home-manager.users.manuel = ./hosts/terra/home.nix;
         }
       ];
     };

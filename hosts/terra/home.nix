@@ -9,8 +9,8 @@
     inputs.nix-index-database.homeModules.default
     inputs.zen-browser.homeModules.default
 
-    ./stylix-shared.nix
-    ./modules/home-manager
+    ../../modules/stylix-shared.nix
+    ../../modules/home-manager
   ];
   qt.enable = true;
 

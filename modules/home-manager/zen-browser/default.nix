@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ pkgs, ... }: {
   programs.zen-browser = {
     enable = true;
     setAsDefaultBrowser = true;
@@ -9,13 +9,14 @@
         "zen.theme.gradient.show-custom-colors" = true;
       };
 
-      extensions.packages = with inputs.firefox-addons.packages.x86_64-linux; [
+      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
         darkreader
         return-youtube-dislikes
         sponsorblock
         startpage-private-search
-        blocktube
+        # blocktube
+        untrap-for-youtube
         ublock-origin
         violentmonkey
       ];

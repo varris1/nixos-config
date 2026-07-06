@@ -36,6 +36,7 @@
         terminal = 11;
       };
     };
+
     icons = {
       enable = true;
       package = pkgs.papirus-icon-theme;

@@ -1,3 +1,9 @@
+let
+  commonMountOptions = [
+    "x-gvfs-hide"
+    "x-gdu.hide"
+  ];
+in
 {
   boot.tmp.cleanOnBoot = true;
 
@@ -5,10 +11,7 @@
     enable = true;
 
     preserveAt."/persist" = {
-      commonMountOptions = [
-        "x-gvfs-hide"
-        "x-gdu.hide"
-      ];
+      inherit commonMountOptions;
 
       files = [
         {
@@ -31,17 +34,13 @@
       ];
 
       users.manuel = {
-        commonMountOptions = [
-          "x-gvfs-hide"
-          "x-gdu.hide"
-        ];
+        inherit commonMountOptions;
 
         files = [
         ];
 
         directories = [
           "Downloads"
-          "Music"
           "Pictures"
           "Repos"
           ".nixconf"
@@ -61,6 +60,17 @@
           ".steam"
           ".factorio"
           ".config/EgoSoft"
+        ];
+      };
+    };
+
+    preserveAt."/mnt/storage/persist" = {
+      inherit commonMountOptions;
+      users.manuel = {
+        inherit commonMountOptions;
+
+        directories = [
+          "Music"
         ];
       };
     };

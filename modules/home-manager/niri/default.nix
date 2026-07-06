@@ -11,7 +11,6 @@
   home.packages = [ pkgs.xwayland-satellite ];
 
   programs.noctalia.enable = true;
-  # stylix.targets.noctalia.enable = true;
 
   wayland.windowManager.niri = {
     enable = true;

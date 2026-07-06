@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   inputs,
@@ -194,6 +195,7 @@
     settings.warn-dirty = false;
     nixPath = lib.mapAttrsToList (name: flake: "${name}=${flake.outPath}") inputs;
     channel.enable = false;
+
   };
 
   nixpkgs.config = {

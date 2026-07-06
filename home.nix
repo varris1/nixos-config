@@ -37,14 +37,14 @@
   };
 
   home.packages = [
-    inputs.noctalia.packages.x86_64-linux.default
-
     pkgs.openmw
     pkgs.pavucontrol
   ];
 
   stylix.targets.blender.enable = false;
   stylix.targets.vencord.enable = false;
+  # xresources.properties = null;
+  stylix.targets.xresources.enable = false;
 
   home.stateVersion = "26.05";
 }

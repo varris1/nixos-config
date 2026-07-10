@@ -31,6 +31,7 @@ in
           mode = "1777";
         }
         "/var/lib/nixos"
+        "/var/lib/sbctl"
         "/var/lib/systemd/timers"
         "/var/log"
         "/var/lib/bluetooth"

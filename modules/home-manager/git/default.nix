@@ -8,5 +8,11 @@
     };
   };
 
-  programs.jujutsu.enable = true;
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user.email = "varris@posteo.net";
+      user.name = "Varris";
+    };
+  };
 }

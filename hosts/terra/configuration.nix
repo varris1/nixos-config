@@ -18,12 +18,16 @@
   # boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.limine = {
     enable = true;
+    secureBoot.enable = true;
     maxGenerations = 10;
+    extraConfig = ''
+      term_background: FF000000
+    '';
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelParams = [ "reboot=acpi" ];
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   boot.extraModprobeConfig = ''
     options rtw89_pci disable_aspm_l1=y
@@ -44,9 +48,6 @@
     #fixes instant wakeup on gigabyte mobos
     ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x1483" ATTR{power/wakeup}="disabled"
   '';
-
-  #should fix shutdown after suspending once
-  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
 
   fonts.packages = [
     pkgs.noto-fonts
@@ -156,6 +157,7 @@
     lm_sensors
     ripgrep
     sops
+    sbctl
   ];
 
   programs.mtr.enable = true;

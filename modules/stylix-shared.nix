@@ -41,5 +41,7 @@
       package = pkgs.papirus-icon-theme;
       dark = "Papirus";
     };
+
+    image = ../wallpapers/3d-model.jpg;
   };
 }

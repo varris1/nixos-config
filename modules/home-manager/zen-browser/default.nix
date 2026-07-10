@@ -14,6 +14,7 @@
         bitwarden
         # blocktube
         darkreader
+        dearrow
         istilldontcareaboutcookies
         return-youtube-dislikes
         sponsorblock

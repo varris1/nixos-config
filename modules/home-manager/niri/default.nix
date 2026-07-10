@@ -8,7 +8,10 @@
     ./binds.nix
   ];
 
-  home.packages = [ pkgs.xwayland-satellite ];
+  home.packages = [
+    pkgs.wl-clipboard-rs
+    pkgs.xwayland-satellite
+  ];
 
   programs.noctalia.enable = true;
 
@@ -16,4 +19,5 @@
     enable = true;
     # validation.enable = false;
   };
+
 }

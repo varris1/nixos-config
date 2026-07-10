@@ -23,6 +23,7 @@
         "lyrics"
         "musicbrainz"
         "replaygain"
+        "mbsync"
       ];
 
       directory = "~/Music";
@@ -36,6 +37,17 @@
         # quiet = true;
         # strong_rec_thresh = 0.90;
       };
+
+      clutter = [
+        "Thumbs.db"
+        ".DS_Store"
+        "*.jpg"
+        "*.png"
+        "*.txt"
+        "*.log"
+        "*.cue"
+        "*.pdf"
+      ];
 
       paths = {
         default = "$albumartist/$year - $album%aunique{}/%if{$multidisc,Disc $disc/}$track $title";

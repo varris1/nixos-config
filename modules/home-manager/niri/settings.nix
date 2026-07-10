@@ -8,12 +8,18 @@
           y = 0;
         };
         focus-at-startup = [ ];
+        variable-refresh-rate._props = {
+          on-demand = true;
+        };
       }
       {
         _args = [ "DP-2" ];
         position._props = {
           x = -2560;
           y = 0;
+        };
+        variable-refresh-rate._props = {
+          on-demand = true;
         };
       }
     ];
@@ -59,6 +65,7 @@
 
     prefer-no-csd = [ ];
     debug.honor-xdg-activation-with-invalid-serial = [ ];
+    # debug.skip-cursor-only-updates-during-vrr = [ ];
 
     hotkey-overlay.skip-at-startup = [ ];
 
@@ -81,7 +88,11 @@
       }
 
       {
-        match._props.app-id._raw = ''r#"^zen-beta$"#'';
+        match = [
+          { _props.app-id._raw = "r#\"^zen$\"#"; }
+          { _props.app-id._raw = "r#\"^zen-beta$\"#"; }
+          { _props.app-id._raw = "r#\"^zen-twilight$\"#"; }
+        ];
 
         draw-border-with-background = false;
         open-maximized = true;
@@ -92,6 +103,16 @@
         open-floating = true;
         default-column-width.fixed = 1920;
         default-window-height.fixed = 1080;
+      }
+
+      {
+        match = [
+          { _props.app-id._raw = "r#\"^steam_app_[0-9]+$\"#"; }
+          { _props.app-id._raw = "r#\"^com\\.factorio\\.Factorio$\"#"; }
+          { _props.app-id._raw = "r#\"^tf_linux64$\"#"; }
+          { _props.app-id._raw = "r#\"^X4$\"#"; }
+        ];
+        variable-refresh-rate = true;
       }
     ];
 

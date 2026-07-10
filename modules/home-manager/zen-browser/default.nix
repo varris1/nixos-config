@@ -1,6 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   programs.zen-browser = {
     enable = true;
+    package = inputs.zen-browser.packages.x86_64-linux.twilight;
     setAsDefaultBrowser = true;
     profiles.nixos-profile = {
       settings = {
@@ -11,13 +12,14 @@
 
       extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
         bitwarden
+        # blocktube
         darkreader
+        istilldontcareaboutcookies
         return-youtube-dislikes
         sponsorblock
         startpage-private-search
-        # blocktube
-        untrap-for-youtube
         ublock-origin
+        untrap-for-youtube
         violentmonkey
       ];
 
@@ -26,5 +28,5 @@
     };
   };
   stylix.targets.zen-browser.profileNames = [ "nixos-profile" ];
-  stylix.targets.zen-browser.enableCss = true;
+  # stylix.targets.zen-browser.enableCss = false;
 }

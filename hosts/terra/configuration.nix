@@ -1,23 +1,35 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
+  config,
   ...
 }:
 {
   imports = [
     ./hardware-configuration.nix
+    ./sops.nix
     ../../modules/stylix-shared.nix
     ./disko.nix
     ./preservation.nix
   ];
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 10;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.limine.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelParams = [ "reboot=acpi" ];
+
+  boot.extraModprobeConfig = ''
+    options rtw89_pci disable_aspm_l1=y
+    options rtw89_pci disable_aspm_l1ss=y
+    options rtw89_pci disable_clkreq=y
+    options rtw89pci disable_aspm_l1=y
+    options rtw89pci disable_aspm_l1ss=y
+    options rtw89pci disable_clkreq=y
+  '';
 
   networking.hostName = "terra"; # Define your hostname.
 
@@ -29,6 +41,9 @@
     #fixes instant wakeup on gigabyte mobos
     ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x1483" ATTR{power/wakeup}="disabled"
   '';
+
+  #should fix shutdown after suspending once
+  systemd.services.systemd-suspend.environment.SYSTEMD_SLEEP_FREEZE_USER_SESSIONS = "false";
 
   fonts.packages = [
     pkgs.noto-fonts
@@ -48,7 +63,17 @@
   };
 
   services.udisks2.enable = true;
-  security.polkit.enable = true;
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+         if (action.id == "org.noctalia.greeter.apply-appearance" &&
+             subject.isInGroup("wheel")) {
+           return polkit.Result.YES;
+         }
+       });
+    '';
+  };
 
   security.rtkit.enable = true;
   services.pipewire = {
@@ -87,7 +112,6 @@
   users.users.manuel = {
     isNormalUser = true;
     # initialPassword = "12345";
-    hashedPasswordFile = "/persist/passwords/password_manuel";
     extraGroups = [
       "uinput"
       "seat"
@@ -128,6 +152,7 @@
     helix
     lm_sensors
     ripgrep
+    sops
   ];
 
   programs.mtr.enable = true;
@@ -193,6 +218,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
+        "pipe-operators"
       ];
       auto-optimise-store = true;
       warn-dirty = false;

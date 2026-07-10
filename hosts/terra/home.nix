@@ -26,6 +26,8 @@
   programs.btop.enable = true;
   programs.ripgrep.enable = true;
 
+  programs.mangohud.enable = true;
+
   programs.nh = {
     enable = true;
     flake = "${config.home.homeDirectory}/.nixconf";
@@ -41,6 +43,7 @@
     pkgs.pavucontrol
   ];
 
+  home.pointerCursor.enable = true;
   stylix.targets.blender.enable = false;
   stylix.targets.vencord.enable = false;
   # xresources.properties = null;

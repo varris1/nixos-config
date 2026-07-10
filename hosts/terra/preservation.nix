@@ -1,3 +1,4 @@
+{ inputs, ... }:
 let
   commonMountOptions = [
     "x-gvfs-hide"
@@ -5,6 +6,10 @@ let
   ];
 in
 {
+  imports = [
+    inputs.preservation.nixosModules.default
+  ];
+
   boot.tmp.cleanOnBoot = true;
 
   preservation = {
@@ -43,12 +48,15 @@ in
           "Downloads"
           "Pictures"
           "Repos"
+
           ".nixconf"
+          ".ssh"
 
           ".config/discord"
           ".config/kdeconnect"
           ".config/kew"
           ".config/qobuz-dl"
+          ".config/sops"
           ".config/zen"
 
           ".local/share/fish"
@@ -66,14 +74,12 @@ in
       };
     };
 
-    preserveAt."/mnt/storage/persist" = {
-      users.manuel = {
-        inherit commonMountOptions;
+    preserveAt."/mnt/storage/persist".users.manuel = {
+      inherit commonMountOptions;
 
-        directories = [
-          "Music"
-        ];
-      };
+      directories = [
+        "Music"
+      ];
     };
   };
   systemd.suppressedSystemUnits = [ "systemd-machine-id-commit.service" ];

@@ -9,7 +9,12 @@
 
   fileSystems."/mnt/storage" = {
     device = "/dev/disk/by-id/nvme-WDS200T1X0E-00AFY0_21383Q802211_1-part1";
-    fsType = "ext4";
+    fsType = "f2fs";
+    options = [
+      "atgc"
+      "gc_merge"
+      "lazytime"
+    ];
   };
 
   disko.devices.nodev = {

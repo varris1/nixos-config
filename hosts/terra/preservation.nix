@@ -67,6 +67,7 @@ in
           ".local/state/wireplumber"
 
           #Games
+          "Games"
           ".local/share/Steam"
           ".steam"
           ".factorio"

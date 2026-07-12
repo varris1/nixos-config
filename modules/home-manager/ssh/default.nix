@@ -3,8 +3,9 @@
     enable = true;
     settings = {
       "*" = {
-        identityFile = "/run/secrets/ssh_private_keys/main";
-        identitiesOnly = true;
+        IdentityFile = "/run/secrets/ssh_private_keys/main";
+        IdentitiesOnly = true;
+        StrictHostKeyChecking = "accept-new";
       };
     };
   };

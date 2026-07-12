@@ -51,7 +51,6 @@ in
           "Repos"
 
           ".nixconf"
-          ".ssh"
 
           ".config/discord"
           ".config/kdeconnect"

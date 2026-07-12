@@ -233,11 +233,13 @@
 
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = (_: true);
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+    overlays = [ inputs.firefox-addons.overlays.default ];
   };
-  nixpkgs.overlays = [ inputs.nur.overlays.default ];
 
   system.stateVersion = "26.05";
 }

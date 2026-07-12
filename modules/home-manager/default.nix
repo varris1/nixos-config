@@ -10,6 +10,7 @@
     ./kew
     ./mpv
     ./niri
+    ./ssh
     ./xdg-mime
     ./yazi
     ./zellij

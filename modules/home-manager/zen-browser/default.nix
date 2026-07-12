@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }: {
   programs.zen-browser = {
     enable = true;
-    package = inputs.zen-browser.packages.x86_64-linux.twilight;
+    package = inputs.zen-browser.packages.x86_64-linux.default;
     setAsDefaultBrowser = true;
     profiles.nixos-profile = {
       settings = {
@@ -10,7 +10,7 @@
         "zen.theme.gradient.show-custom-colors" = true;
       };
 
-      extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
+      extensions.packages = with pkgs.firefox-addons; [
         bitwarden
         # blocktube
         darkreader

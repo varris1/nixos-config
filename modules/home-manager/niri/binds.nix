@@ -1,4 +1,10 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
   wayland.windowManager.niri.settings.binds = {
     "Mod+Shift+Slash".show-hotkey-overlay = [ ];
 
@@ -168,7 +174,7 @@
     "Mod+D".spawn-sh = "noctalia msg panel-toggle launcher";
     "Mod+S".spawn-sh = "noctalia msg panel-toggle control-center";
     "Mod+Shift+C".spawn-sh = "pkill noctalia && sleep 2 ; uwsm app -- noctalia";
-    "Mod+Q".spawn-sh = "uwsm app -- zen-twilight";
+    "Mod+Q".spawn-sh = "uwsm app -- ${lib.getExe config.programs.zen-browser.package}";
     "Mod+X".spawn-sh = "uwsm app -- ghostty -e yazi";
     "Mod+Z".spawn-sh = "uwsm app -- ghostty -e btop";
   };
